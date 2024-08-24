@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from oauth2_provider.views import AuthorizationView, TokenView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('o/authorize/', AuthorizationView.as_view(), name='authorize'),
+    path('o/token/', TokenView.as_view(), name='token'),
 ]
