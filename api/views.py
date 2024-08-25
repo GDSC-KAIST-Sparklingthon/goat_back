@@ -3,10 +3,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import UserSerializer
 from .models import User
+from .gemini import AIMatchmake
 import requests
 
-class LoginView(APIView):
-    def get(self, request, *args, **kwargs):
+class UserView(APIView):
+    def get(self, request):
         auth_header = request.headers.get('Authorization')
         if auth_header:
             try:
@@ -18,7 +19,7 @@ class LoginView(APIView):
                 user, created = User.objects.get_or_create(id=user_id)
 
                 serializer = UserSerializer(user)
-                return Response({"message": "Token received", "token": token, "user": serializer.data})
+                return Response({"message": "Token received", "user": serializer.data})
 
             except User.DoesNotExist:
                 return Response({"message": "Invalid user"}, status=status.HTTP_400_BAD_REQUEST)
@@ -27,7 +28,7 @@ class LoginView(APIView):
         else:
             return Response({"message": "No token provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-    def put(self, request, *args, **kwargs):
+    def put(self, request):
         auth_header = request.headers.get('Authorization')
         if auth_header:
             try:

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-v9j5mo-ispe-xzc+e1+jts%%lwz1q04l6yiozndu7=0uy&i@2p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'goat_back.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbtest', 
+        'NAME': 'dbtest2', 
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': '127.0.0.1', 

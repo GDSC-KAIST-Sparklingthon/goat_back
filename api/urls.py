@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path
-from .views import LoginView
+from .views import UserView
 
 urlpatterns = [
-    path('login/', LoginView.as_view(), name='login'),
+    path('user/', UserView.as_view(), name='user'),
 ]

@@ -6,9 +6,8 @@ class User(models.Model):
     #로그인 정보 추가하기
     id = models.CharField(primary_key=True, max_length=50)
     goat_age = models.IntegerField(default=0)
-    grass_num = models.IntegerField(default=0)
-    garden_array = ArrayField(models.BooleanField(max_length=1), size=81, default=[False]*81) 
-    #여기서부터 optional
+    hay_num = models.IntegerField(default=10)
+    garden_array = models.JSONField(default=list, blank=True)
     subscription_end_date = models.DateField(null=True, blank=True)
     donated_goat_num = models.IntegerField(default=0)
 
